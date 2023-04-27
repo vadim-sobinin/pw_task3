@@ -44,24 +44,8 @@ export type codesType = {
 export type subscribeType = {
   id: number;
   userId: number;
-  user: string;
   productId: number;
-  product: {
-    id: number;
-    sitesCount: number;
-    name: number;
-    prices: [
-      {
-        id: number;
-        isActive: true;
-        productId: number;
-        product: {};
-        price: number;
-      },
-    ];
-  };
   currentPeriodStart: string;
   currentPeriodEnd: string;
   status: string;
-  codes: [string];
 };
