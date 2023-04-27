@@ -1,0 +1,17 @@
+// если вы хотите использовать sass-переменные - удалите root
+// colors
+:root {
+  // base
+  --font-family: "Inter";
+  --content-width: 1268px;
+  --container-offset: 20px;
+  --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
+
+  // colors
+  --light-color: #fff;
+  --bg-color: #181818;
+  --primary-color: #fc5842;
+  --card-bg-color: #272727;
+  --gray-color: #969696;
+  --pale-text-color: #c7c7c7;
+}

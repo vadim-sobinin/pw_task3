@@ -1,0 +1,61 @@
+.subscription__slide {
+  background: var(--card-bg-color);
+  max-width: 620px;
+  border-radius: 12px;
+}
+
+.subscription-slide {
+  // subscription-slide__title
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 48px;
+    padding-left: 32px;
+    padding-right: 72px;
+    font-family: "IBold";
+    font-size: 24px;
+    line-height: 34px;
+  }
+  // subscription-slide__name
+  &__name {
+  }
+  // subscription-slide__price
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  // subscription-slide__divider
+  &__divider {
+    margin: 32px 0;
+    border: 1px solid var(--gray-color);
+  }
+  // subscription-slide__value
+  &__value {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 48px;
+    padding-left: 32px;
+    padding-right: 48px;
+    font-family: "IMed";
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 38px;
+  }
+  // subscription-slide__total
+  &__total {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "IBold";
+    font-size: 28px;
+    line-height: 40px;
+  }
+  // subscription-slide__total-title
+  &__total-title {
+  }
+  // subscription-slide__total-value
+  &__total-value {
+  }
+}

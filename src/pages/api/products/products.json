@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "sitesCount": 1,
+    "name": "One cite",
+    "prices": [
+      {
+        "id": 1,
+        "isActive": true,
+        "productId": 1,
+        "price": "46"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "sitesCount": 3,
+    "name": "Three cites",
+    "prices": [
+      {
+        "id": 2,
+        "isActive": true,
+        "productId": 2,
+        "price": "85"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "sitesCount": 7,
+    "name": "Seven sites",
+    "prices": [
+      {
+        "id": 3,
+        "isActive": true,
+        "productId": 3,
+        "price": "107"
+      }
+    ]
+  }
+]

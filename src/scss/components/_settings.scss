@@ -1,0 +1,63 @@
+.settings {
+  // .settings__title
+  &__title {
+    font-family: "IBold";
+    font-size: 54px;
+    line-height: 64px;
+    margin-bottom: 48px;
+  }
+  // .settings__switch
+  &__switch {
+    font-family: "IBold";
+    font-size: 18px;
+    line-height: 20px;
+    border-bottom: 2px solid #393939;
+
+    @include mobile {
+      border-bottom: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+  }
+  // .settings__switch-link
+  &__switch-link {
+    display: inline-block;
+    padding: 0 24px 10px 24px;
+    margin-bottom: -2px;
+    border-bottom: 2px solid #393939;
+    cursor: pointer;
+
+    &.active {
+      border-bottom: 2px solid var(--primary-color);
+    }
+  }
+  // .settings__form
+  &__form {
+    margin-top: 48px;
+    margin-bottom: 370px;
+    @include small-tablet {
+      margin-bottom: 50px;
+    }
+  }
+  // .settings__form-title
+  &__form-title {
+    font-family: "IBold";
+    font-size: 28px;
+    line-height: 40px;
+  }
+  // .settings__inputs
+  &__inputs {
+    max-width: 512px;
+  }
+  // .settings__form-input
+  &__form-input {
+  }
+  // .settings__form-btn
+  &__form-btn {
+  }
+}
+
+.active {
+}

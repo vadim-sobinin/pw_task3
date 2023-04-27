@@ -1,0 +1,44 @@
+.steps {
+  // .steps__flex
+  &__flex {
+    margin-top: 64px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  // .steps__marker
+  &__marker {
+    border: 4px solid #393939;
+    border-radius: 50px;
+  }
+  // .steps__step
+  &__step {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 195px;
+
+    &.active {
+      .steps__marker {
+        border: 4px solid var(--primary-color);
+      }
+    }
+  }
+  // .steps__title
+  &__title {
+    font-family: 'ISemi';
+    font-size: 20px;
+    line-height: 22px;
+    color: var(--light-color);
+    @include mobile {
+      font-size: 12px;
+      text-align: center;
+    }
+  }
+}
+.container {
+  // .container_small
+  &_small {
+  }
+}
