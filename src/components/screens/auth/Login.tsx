@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { useRouter } from 'next/router';
 import { selectUser } from '@/redux/user/user.selectors';
 import { useForm } from 'react-hook-form';
-import { UserService } from '@/services/user.servise';
+import { UserService } from '@/services/user.service';
 import { setCurrentUser } from '@/redux/user/user.slice';
 
 type FormValues = {

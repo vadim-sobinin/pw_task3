@@ -22,6 +22,12 @@ export type userType = {
   };
 };
 
+export type userResponseType = {
+  username: string;
+  id: number;
+  email: string;
+};
+
 export type fullUserDataType = {
   id: number;
   email: string;

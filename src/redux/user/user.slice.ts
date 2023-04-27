@@ -1,4 +1,4 @@
-import { userType } from '@/types';
+import { userType, userResponseType } from '@/types';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
@@ -24,9 +24,15 @@ export const usersSlice = createSlice({
       state.isAuth = false;
       state.userData = null;
     },
+    updateUserInfo: (state, { payload }: PayloadAction<userResponseType>) => {
+      if (state.userData) {
+        state.userData.user.email = payload.email;
+        state.userData.user.username = payload.username;
+      }
+    },
   },
 });
 
-export const { setCurrentUser, logoutUser } = usersSlice.actions;
+export const { setCurrentUser, logoutUser, updateUserInfo } = usersSlice.actions;
 
 export default usersSlice.reducer;

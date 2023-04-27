@@ -29,9 +29,9 @@ const Header = () => {
           {userData && (
             <>
               <nav className="header__links">
-                <a className="header__sub-link" href="#">
+                <Link className="header__sub-link" href="/subscriptions">
                   My subscriptions
-                </a>
+                </Link>
                 <button
                   className="header__user-link tooltip"
                   onClick={() => setToggleTooltip(!toggleTooltip)}>
@@ -46,7 +46,7 @@ const Header = () => {
                   />
                   <div className="tooltipcontent">
                     <div className="tooltip__flex">
-                      <a href="#" className="tooltip__settings">
+                      <Link href="/settings" className="tooltip__settings">
                         <Image
                           loading="lazy"
                           src="../img/svg/settings.svg"
@@ -56,7 +56,7 @@ const Header = () => {
                           alt="settings"
                         />
                         <span>Settings</span>
-                      </a>
+                      </Link>
                       <a href="#" className="tooltip__logout" onClick={logout}>
                         <Image
                           loading="lazy"

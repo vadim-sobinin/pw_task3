@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import Steps, { step } from './Steps';
-import { useForm, useController, UseControllerProps } from 'react-hook-form';
-import { useEffect } from 'react';
-import { UserService } from '@/services/user.servise';
+import { useForm } from 'react-hook-form';
+import { UserService } from '@/services/user.service';
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { setCurrentUser } from '@/redux/user/user.slice';
 import { useRouter } from 'next/router';
