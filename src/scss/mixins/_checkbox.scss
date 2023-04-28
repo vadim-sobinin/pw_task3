@@ -1,6 +1,6 @@
 /* stylelint-disable */
 
-@mixin custom-checkbox {
+@mixin card__checkbox {
   position: relative;
 
   &__field {
@@ -13,7 +13,7 @@
     cursor: pointer;
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       left: 0;
       top: 0;
@@ -24,7 +24,7 @@
     }
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       left: 0;
       top: 0;
@@ -41,16 +41,16 @@
   }
 }
 
-.custom-checkbox__field:checked + .custom-checkbox__content::after {
+.card__checkbox__field:checked + .card__checkbox__content::after {
   opacity: 1;
 }
 
-.custom-checkbox__field:focus + .custom-checkbox__content::before {
+.card__checkbox__field:focus + .card__checkbox__content::before {
   outline: 2px solid #f00;
   outline-offset: 2px;
 }
 
-.custom-checkbox__field:disabled + .custom-checkbox__content {
+.card__checkbox__field:disabled + .card__checkbox__content {
   opacity: 0.4;
   pointer-events: none;
 }

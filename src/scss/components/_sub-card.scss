@@ -1,0 +1,192 @@
+.card {
+  margin-bottom: 32px;
+  padding-top: 54px;
+  padding-bottom: 31px;
+  padding-left: 32px;
+  background: var(--card-bg-color);
+  border-radius: 12px;
+  &__flex {
+    max-width: 1160px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+  &__checkbox {
+    // display: inline-flex;
+    // align-items: center;
+    // user-select: none;
+    // position: relative;
+    // width: 28px;
+    // height: 28px;
+    // // z-index: -1;
+    // border: none;
+    // color: var(--grey-color);
+  }
+
+  &__input {
+    box-shadow: 0px 2px 12px rgba(20, 20, 43, 0.06);
+    border-radius: 6px;
+    background-color: #393939;
+    font-family: 'IMed';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    color: var(--gray-color);
+    padding: 25px 24px;
+    border: 1px solid #393939;
+    outline: none;
+  }
+  &__code {
+    margin-left: 48px;
+    flex-basis: 296px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    &-input-wrapper {
+      position: relative;
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 24px;
+        margin: auto 0;
+        width: 25px;
+        height: 25px;
+        background: url('../../../public/img/svg/copy.svg') no-repeat;
+        background-size: cover;
+        cursor: pointer;
+      }
+    }
+  }
+  &__code-input {
+    padding: 25px 56px 25px 24px;
+    width: 100%;
+  }
+  &__label {
+    position: absolute;
+    left: 0;
+    top: -30px;
+    z-index: 2;
+    font-family: 'IBold';
+    font-size: 16px;
+    line-height: 18px;
+    color: var(--gray-color);
+  }
+
+  &__code-label {
+  }
+  &__domain {
+    margin-left: 28px;
+    position: relative;
+    flex-grow: 1;
+
+    &-input {
+      width: 100%;
+    }
+  }
+
+  &__btn {
+    margin-left: 56px;
+    flex-basis: 110px;
+    display: flex;
+    align-items: center;
+  }
+  &__activate {
+    padding: 20px 24px;
+    background-color: var(--light-color);
+    color: var(--primary-color);
+    box-shadow: 0px 10px 28px rgba(252, 88, 66, 0.2);
+  }
+
+  &__status {
+    margin-left: 56px;
+    flex-basis: 80px;
+    position: relative;
+    &-label {
+      position: absolute;
+      left: 0;
+      top: -40px;
+      font-family: 'IBold';
+      font-size: 16px;
+      line-height: 18px;
+      color: var(--gray-color);
+    }
+    &-value {
+      font-family: 'IBold';
+      font-size: 22px;
+      line-height: 28px;
+
+      &.active {
+        color: var(--active-color);
+      }
+      &.inactive {
+        color: #ff5a65;
+      }
+    }
+  }
+}
+
+.card__checkbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  // outline: none;
+
+  & + label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+      flex-grow: 0;
+      border: 1px solid var(--pale-text-color);
+      box-shadow: 0px 2px 6px rgba(20, 20, 43, 0.06);
+      background-color: var(--light-color);
+      border-radius: 7px;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 50% 50%;
+    }
+  }
+}
+.card__checkbox:checked + label::before {
+  border-color: var(--primary-color);
+  background-color: var(--primary-color);
+  background-image: url(../../../public/img/svg/check.svg);
+  background-size: 16px 12px;
+}
+/* стили при наведении курсора на checkbox */
+.card__checkbox:not(:disabled):not(:checked) + label:hover::before {
+  background-color: var(--pale-text-color);
+}
+.card__checkbox:not(:disabled):checked + label:hover::before {
+  background-color: #dc2b2b;
+  border-color: #dc2b2b;
+}
+/* стили для активного состояния чекбокса (при нажатии на него) */
+.card__checkbox:not(:disabled):active + label::before {
+  background-color: #b3d7ff;
+  border-color: #b3d7ff;
+}
+/* стили для чекбокса, находящегося в фокусе */
+.card__checkbox:focus + label::before {
+  box-shadow: 0 0 0 0.2rem rgba(252, 88, 66, 0.3);
+}
+/* стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked */
+.card__checkbox:focus:not(:checked) + label::before {
+  box-shadow: 0 0 0 0.2rem rgba(256, 256, 256, 0.1);
+}
+/* стили для чекбокса, находящегося в состоянии disabled */
+.card__checkbox:disabled + label::before {
+  opacity: 0.5;
+}

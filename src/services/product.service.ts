@@ -24,7 +24,6 @@ export const ProductService = {
         bodyParameters,
         config,
       );
-      console.log(data);
       return data;
     } catch (err) {
       const error = err as AxiosError;

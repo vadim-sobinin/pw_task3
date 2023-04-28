@@ -65,7 +65,7 @@ const Payment = () => {
                   <span>{selectedProduct?.prices[0].price}$</span>
                   <Image
                     loading="lazy"
-                    src="../img/svg/cart.svg"
+                    src="./img/svg/cart.svg"
                     width="24"
                     height="24"
                     alt="cart icon"

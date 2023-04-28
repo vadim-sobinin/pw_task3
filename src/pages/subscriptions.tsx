@@ -1,7 +1,8 @@
+import Subscriptions from '@/components/screens/subscriptions/Subscriptions';
 import type { NextPage } from 'next';
 
-const Subscriptions: NextPage = () => {
-  return <>Subscriptions</>;
+const subscriptions: NextPage = () => {
+  return <Subscriptions />;
 };
 
-export default Subscriptions;
+export default subscriptions;

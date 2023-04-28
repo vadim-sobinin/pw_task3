@@ -48,7 +48,6 @@ const Settings = () => {
           resetField('email');
           resetField('username');
         }
-        console.log('Info Submit');
       } else {
         const response = await UserService.updateUserPassword({
           token: userData.token,

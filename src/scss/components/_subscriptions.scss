@@ -2,60 +2,74 @@
   background: var(--card-bg-color);
   max-width: 620px;
   border-radius: 12px;
+
+  opacity: 0.6;
+
+  &.active {
+    opacity: 1;
+  }
 }
 
-.subscription-slide {
-  // subscription-slide__title
+.subscription {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 44px;
+  }
+
   &__title {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 48px;
-    padding-left: 32px;
-    padding-right: 72px;
-    font-family: "IBold";
-    font-size: 24px;
-    line-height: 34px;
+    font-family: 'IBold';
+    font-size: 54px;
+    line-height: 64px;
   }
-  // subscription-slide__name
-  &__name {
+
+  &__cards {
+    margin-bottom: 120px;
   }
-  // subscription-slide__price
-  &__price {
+}
+
+.slider-nav {
+  // z-index: 2;
+  // position: absolute;
+  // bottom: 0;
+  // left: 50%;
+  // transform: translateX(-50%);
+  margin-top: 24px;
+  margin-bottom: 32px;
+  margin-right: auto;
+  margin-left: auto;
+
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  &__arrow {
     display: flex;
     align-items: center;
-    gap: 9px;
-  }
-  // subscription-slide__divider
-  &__divider {
-    margin: 32px 0;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
     border: 1px solid var(--gray-color);
+    border-radius: 12px;
+    cursor: pointer;
+
+    &.disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
   }
-  // subscription-slide__value
-  &__value {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 48px;
-    padding-left: 32px;
-    padding-right: 48px;
-    font-family: "IMed";
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 38px;
+
+  &__arrow-left {
+    transform: rotate(180deg);
   }
-  // subscription-slide__total
-  &__total {
-    margin-top: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-family: "IBold";
-    font-size: 28px;
-    line-height: 40px;
+
+  &__counter {
+    font-family: 'IBold';
+    font-size: 22px;
+    line-height: 28px;
   }
-  // subscription-slide__total-title
-  &__total-title {
-  }
-  // subscription-slide__total-value
-  &__total-value {
+  &__counter-total {
+    color: var(--gray-color);
   }
 }

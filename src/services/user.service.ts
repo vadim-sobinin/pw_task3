@@ -110,7 +110,6 @@ export const UserService = {
         bodyParameters,
         config,
       );
-      console.log(data);
       return data;
     } catch (err) {
       const error = err as AxiosError;
@@ -140,7 +139,6 @@ export const UserService = {
         config,
       );
 
-      console.log(data);
       return data;
     } catch (err) {
       const error = err as AxiosError;
