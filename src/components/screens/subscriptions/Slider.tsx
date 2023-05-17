@@ -10,9 +10,10 @@ import NavSlider from './NavSlider';
 import { SubscribeType } from '@/types';
 type SliderPropsType = {
   subList: SubscribeType[];
+  setSelectedSubId: (id: number) => void;
 };
 
-const Slider: FC<SliderPropsType> = ({ subList }) => {
+const Slider: FC<SliderPropsType> = ({ subList, setSelectedSubId }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
@@ -32,7 +33,9 @@ const Slider: FC<SliderPropsType> = ({ subList }) => {
       {subList &&
         subList.map((sub) => (
           <SwiperSlide key={sub.id}>
-            {({ isActive }) => <Slide sub={sub} isActive={isActive} />}
+            {({ isActive }) => (
+              <Slide sub={sub} isActive={isActive} setSelectedSubId={setSelectedSubId} />
+            )}
           </SwiperSlide>
         ))}
 

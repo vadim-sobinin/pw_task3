@@ -1,21 +1,18 @@
-import axios, {AxiosError} from "axios";
-
-
+import axios, { AxiosError } from 'axios';
 
 const API_URL = 'https://internship.purrweb.site/api';
 
 axios.defaults.baseURL = API_URL;
 
-
 export const SubscribeService = {
-	async getSubscribe(token: string) {
-		try {
-			const response = await axios.get('/subscribe/self', {
+  async getSubscribe(token: string) {
+    try {
+      const response = await axios.get('/subscribe/self', {
         headers: { Authorization: `Bearer ${token}` },
       });
       return response;
-		} catch (err) {
-			const error = err as AxiosError;
+    } catch (err) {
+      const error = err as AxiosError;
       if (error.response) {
         return error.response.data;
       } else if (error.request) {
@@ -24,5 +21,41 @@ export const SubscribeService = {
         alert(`Error ${error.message}`);
       }
     }
-	}
-}
+  },
+
+  async getCodes(token: string) {
+    try {
+      const response = await axios.get('/code/self', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      return response;
+    } catch (err) {
+      const error = err as AxiosError;
+      if (error.response) {
+        return error.response.data;
+      } else if (error.request) {
+        return error.request.data;
+      } else {
+        alert(`Error ${error.message}`);
+      }
+    }
+  },
+  async activateCode(token: string, code: string) {
+    try {
+      const response = await axios.post('/code/activate', {
+        headers: { Authorization: `Bearer ${token}` },
+        code: code,
+      });
+      return response;
+    } catch (err) {
+      const error = err as AxiosError;
+      if (error.response) {
+        return error.response.data;
+      } else if (error.request) {
+        return error.request.data;
+      } else {
+        alert(`Error ${error.message}`);
+      }
+    }
+  },
+};

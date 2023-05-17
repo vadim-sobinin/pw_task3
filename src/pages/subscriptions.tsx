@@ -1,22 +1,25 @@
 import Subscriptions from '@/components/screens/subscriptions/Subscriptions';
 import { NextPage } from 'next';
-import { SubscribeType } from '@/types';
+import { SubscribeType, codesType } from '@/types';
 import { SubscribeService } from '@/services/subscribe.service';
 
 type subPropsType = {
-    subList: SubscribeType[];
+  subList: SubscribeType[];
+  codeList: codesType[];
 };
 
 export async function getServerSideProps({ req }: any) {
-    const token = String(req.cookies.key) || '';
+  const token = String(req.cookies.key) || '';
 
-    const subscribe = await SubscribeService.getSubscribe(token);
+  const subscribe = await SubscribeService.getSubscribe(token);
 
-    return { props: { subList: subscribe.data } };
+  const codes = await SubscribeService.getCodes(token);
+
+  return { props: { codeList: codes.data, subList: subscribe.data } };
 }
 
-const subscriptions: NextPage<subPropsType> = ({ subList }) => {
-    return <Subscriptions subList={subList} />;
+const subscriptions: NextPage<subPropsType> = ({ subList, codeList }) => {
+  return <Subscriptions subList={subList} codeList={codeList} />;
 };
 
 export default subscriptions;

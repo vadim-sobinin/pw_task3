@@ -5,6 +5,7 @@ import { FC } from 'react';
 type SlidePropsType = {
   isActive: boolean;
   sub: SubscribeType;
+  setSelectedSubId: (id: number) => void;
 };
 
 const formatDate = (date: Date) => {
@@ -20,9 +21,12 @@ const formatDate = (date: Date) => {
   return dd + '.' + mm + '.' + yy;
 };
 
-const Slide: FC<SlidePropsType> = ({ isActive, sub }) => {
+const Slide: FC<SlidePropsType> = ({ isActive, sub, setSelectedSubId }) => {
   const date = new Date(Number(sub.currentPeriodEnd));
   const validUntil = formatDate(date);
+
+  isActive && setSelectedSubId(sub.id);
+
   return (
     <div className={`subscription__slide ${isActive ? 'active' : ''}`}>
       <div className="sub-slide__title">
