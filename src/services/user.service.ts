@@ -1,4 +1,4 @@
-import { productType } from '@/types';
+import {setCookie} from './cookie'
 import axios, { AxiosError } from 'axios';
 
 const API_URL = 'https://internship.purrweb.site/api';
@@ -46,6 +46,7 @@ export const UserService = {
         username,
         password,
       });
+      setCookie('key', response.data.token)
       return response;
     } catch (err) {
       const error = err as AxiosError;
@@ -64,7 +65,7 @@ export const UserService = {
         email,
         password,
       });
-
+      setCookie('key', response.data.token)
       return response;
     } catch (err) {
       const error = err as AxiosError;

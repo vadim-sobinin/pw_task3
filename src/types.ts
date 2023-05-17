@@ -42,9 +42,9 @@ export type codesType = {
   origin: string;
   status: string;
   subscribeId: number;
-  subscribe: subscribeType;
+  subscribe?: subscribeType;
   userId: number;
-  user: string;
+  user?: string;
 };
 
 export type subscribeType = {
@@ -55,3 +55,14 @@ export type subscribeType = {
   currentPeriodEnd: string;
   status: string;
 };
+
+export type SubscribeType = {
+  id: number;
+  userId: number;
+  productId: number;
+  currentPeriodStart: string;
+  currentPeriodEnd: string;
+  status: string;
+  product: productType;
+  codes: codesType[];
+}

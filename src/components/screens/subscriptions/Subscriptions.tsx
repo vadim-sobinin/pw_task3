@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Slider from './Slider';
 import Card from './Card';
+import { SubscribeType } from '@/types';
 
-const Subscriptions = () => {
+type Props = {
+  subList: SubscribeType[];
+};
+
+const Subscriptions: FC<Props> = ({ subList }) => {
+  // console.log(subList);
+
   return (
     <section className="subscriptions">
       <div className="container">
@@ -13,7 +20,8 @@ const Subscriptions = () => {
           </a>
         </div>
       </div>
-      <Slider />
+      {/* {subList && subList.map((sub) => <div key={sub.id}>{sub.product.name}</div>)} */}
+      <Slider subList={subList} />
       <div className="container subscription__cards">
         <Card />
         <Card />

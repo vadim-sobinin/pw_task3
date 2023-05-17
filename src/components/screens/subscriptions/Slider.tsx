@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React, { useRef, useState } from 'react';
+import React, { FC, useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -7,8 +7,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation } from 'swiper';
 import Slide from './Slide';
 import NavSlider from './NavSlider';
+import { SubscribeType } from '@/types';
+type SliderPropsType = {
+  subList: SubscribeType[];
+};
 
-const Slider = () => {
+const Slider: FC<SliderPropsType> = ({ subList }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
@@ -25,12 +29,13 @@ const Slider = () => {
       modules={[Navigation, FreeMode]}
       onActiveIndexChange={(swiper) => setActiveIndex(swiper.activeIndex)}
       className="mySwiper">
-      <SwiperSlide>{({ isActive }) => <Slide isActive={isActive} />}</SwiperSlide>
-      <SwiperSlide>{({ isActive }) => <Slide isActive={isActive} />}</SwiperSlide>
-      <SwiperSlide>{({ isActive }) => <Slide isActive={isActive} />}</SwiperSlide>
-      <SwiperSlide>{({ isActive }) => <Slide isActive={isActive} />}</SwiperSlide>
-      <SwiperSlide>{({ isActive }) => <Slide isActive={isActive} />}</SwiperSlide>
-      <SwiperSlide>{({ isActive }) => <Slide isActive={isActive} />}</SwiperSlide>
+      {subList &&
+        subList.map((sub) => (
+          <SwiperSlide key={sub.id}>
+            {({ isActive }) => <Slide sub={sub} isActive={isActive} />}
+          </SwiperSlide>
+        ))}
+
       <NavSlider activeIndex={activeIndex} />
     </Swiper>
   );

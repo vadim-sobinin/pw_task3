@@ -1,6 +1,7 @@
 import { userType, userResponseType } from '@/types';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import {deleteCookie} from '../../services/cookie/index'
 
 type initialStateType = {
   isAuth: boolean;
@@ -23,6 +24,7 @@ export const usersSlice = createSlice({
     logoutUser: (state) => {
       state.isAuth = false;
       state.userData = null;
+      deleteCookie('key')
     },
     updateUserInfo: (state, { payload }: PayloadAction<userResponseType>) => {
       if (state.userData) {

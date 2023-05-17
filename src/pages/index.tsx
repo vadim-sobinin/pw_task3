@@ -4,23 +4,23 @@ import { productType } from '@/types';
 import { ProductService } from '@/services/product.service';
 
 type getStaticPropsType = {
-  cardList: productType[];
+    cardList: productType[];
 };
 
 type homePropsType = {
-  cardList: productType[];
+    cardList: productType[];
 };
 
 export const getStaticProps: GetStaticProps<getStaticPropsType> = async () => {
-  const cardList = await ProductService.getAll();
+    const cardList = await ProductService.getAll();
 
-  return {
-    props: { cardList },
-    revalidate: 60,
-  };
+    return {
+        props: { cardList },
+        revalidate: 60,
+    };
 };
 
 const Home: NextPage<homePropsType> = ({ cardList }) => {
-  return <Hero cardList={cardList} />;
+    return <Hero cardList={cardList} />;
 };
 export default Home;
