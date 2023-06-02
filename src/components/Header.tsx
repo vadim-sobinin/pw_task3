@@ -4,16 +4,19 @@ import { logoutUser } from '@/redux/user/user.slice';
 import { getCookie } from '@/services/cookie';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { MouseEvent, useState } from 'react';
 
 const Header = () => {
   const { userData } = useAppSelector(selectUser);
   const dispatch = useAppDispatch();
   const [toggleTooltip, setToggleTooltip] = useState(false);
+  const router = useRouter();
 
   const logout = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     dispatch(logoutUser());
+    router.push('/');
   };
 
   return (

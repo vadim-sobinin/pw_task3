@@ -27,7 +27,7 @@ export async function getServerSideProps({ req }: any) {
 }
 
 const subscriptions: NextPage<subPropsType> = ({ subList, codeList }) => {
-  console.log(subList, codeList);
+  // console.log(subList, codeList);
   return <Subscriptions subList={subList} codeList={codeList} />;
 };
 

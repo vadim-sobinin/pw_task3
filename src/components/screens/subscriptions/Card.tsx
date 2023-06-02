@@ -37,7 +37,7 @@ const Card: FC<CardPropsType> = ({ codeData }) => {
             <input
               placeholder="License code"
               className="card__input card__code-input"
-              value={data.code}></input>
+              defaultValue={data.code}></input>
           </div>
         </div>
         <div className="card__domain">

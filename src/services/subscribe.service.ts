@@ -58,4 +58,23 @@ export const SubscribeService = {
       }
     }
   },
+
+  async changeSubscribe(token: string, productId: number, subId: number) {
+    const data = { productId, subscribeId: subId };
+    try {
+      const response = fetch(API_URL + '/subscribe/change-product', {
+        method: 'post',
+        headers: new Headers({
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          accept: 'application/json',
+        }),
+        body: JSON.stringify(data),
+      });
+
+      return response;
+    } catch (err) {
+      console.log(err);
+    }
+  },
 };

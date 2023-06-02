@@ -1,6 +1,6 @@
-import { useAppDispatch, useAppSelector } from '@/redux/hook';
+import { useAppDispatch } from '@/redux/hook';
 import { selectProduct } from '@/redux/product/product.slice';
-import { selectUser } from '@/redux/user/user.selectors';
+import { getCookie } from '@/services/cookie';
 import { productType } from '@/types';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -8,11 +8,10 @@ import type { FC, MouseEvent } from 'react';
 
 interface CardProps {
   card: productType;
+  activeProduct?: number;
 }
 
-const Card: FC<CardProps> = ({ card }) => {
-  const { isAuth } = useAppSelector(selectUser);
-
+const Card: FC<CardProps> = ({ card, activeProduct = 2 }) => {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
@@ -20,11 +19,22 @@ const Card: FC<CardProps> = ({ card }) => {
     e.preventDefault();
     dispatch(selectProduct(card));
 
-    router.push(isAuth ? '/payment' : '/register');
+    if (getCookie('key')) {
+      if (router.query.subid) {
+        router.push({
+          pathname: '/payment',
+          query: { subid: router.query.subid },
+        });
+      } else {
+        router.push('/payment');
+      }
+    } else {
+      router.push('/register');
+    }
   };
 
   return (
-    <div className={`hero__card card ${card.id === 2 && 'primary'}`}>
+    <div className={`hero__card card ${card.id === activeProduct && 'primary'}`}>
       <h2 className="card__title">${card.prices[0].price}</h2>
       <h3 className="card__subtitle">{card.name}</h3>
       <span className="card__description">
@@ -39,9 +49,18 @@ const Card: FC<CardProps> = ({ card }) => {
         <li className="card__feature">Billed annually</li>
       </ul>
 
-      <Link className={`card__button ${card.id === 2 && 'primary'}`} href="#" onClick={onClickBtn}>
-        Get Gscore
-      </Link>
+      {card.id === activeProduct && router.query.subid ? (
+        <div className={`card__button ${card.id === activeProduct && 'primary'}`}>
+          Current subscription
+        </div>
+      ) : (
+        <Link
+          className={`card__button ${card.id === activeProduct && 'primary'}`}
+          href="#"
+          onClick={onClickBtn}>
+          {router.query.subid ? 'Switch to this subscription' : 'Get Gscore'}
+        </Link>
+      )}
     </div>
   );
 };
