@@ -24,6 +24,9 @@
         border: 4px solid var(--primary-color);
       }
     }
+    &.disabled {
+      pointer-events: none;
+    }
   }
   // .steps__title
   &__title {

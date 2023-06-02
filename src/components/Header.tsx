@@ -1,14 +1,14 @@
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { selectUser } from '@/redux/user/user.selectors';
 import { logoutUser } from '@/redux/user/user.slice';
+import { getCookie } from '@/services/cookie';
 import Image from 'next/image';
 import Link from 'next/link';
 import { MouseEvent, useState } from 'react';
 
 const Header = () => {
-  const { isAuth, userData } = useAppSelector(selectUser);
+  const { userData } = useAppSelector(selectUser);
   const dispatch = useAppDispatch();
-
   const [toggleTooltip, setToggleTooltip] = useState(false);
 
   const logout = (e: MouseEvent<HTMLAnchorElement>) => {
@@ -26,7 +26,7 @@ const Header = () => {
               <h2>GScore</h2>
             </div>
           </Link>
-          {userData && (
+          {userData && getCookie('key') && (
             <>
               <nav className="header__links">
                 <Link className="header__sub-link" href="/subscriptions">

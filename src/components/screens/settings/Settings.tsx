@@ -1,7 +1,9 @@
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { selectUser } from '@/redux/user/user.selectors';
 import { updateUserInfo } from '@/redux/user/user.slice';
+import { getCookie } from '@/services/cookie';
 import { UserService } from '@/services/user.service';
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -18,6 +20,12 @@ type FormValues = {
 };
 
 const Settings = () => {
+  const router = useRouter();
+
+  if (!getCookie('key')) {
+    router.replace('/');
+  }
+
   const [mode, setMode] = useState(0);
 
   const { userData } = useAppSelector(selectUser);

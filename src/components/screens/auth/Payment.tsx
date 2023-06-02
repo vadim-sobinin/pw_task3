@@ -8,9 +8,10 @@ import { FormEvent, useState } from 'react';
 import { ProductService } from '@/services/product.service';
 import Link from 'next/link';
 import { setIsAlreadyPurchase } from '@/redux/product/product.slice';
+import { getCookie } from '@/services/cookie';
 
 const Payment = () => {
-  const { isAuth, userData } = useAppSelector(selectUser);
+  const { userData } = useAppSelector(selectUser);
   const router = useRouter();
   const { selectedProduct, isAlreadyPurchase } = useAppSelector(productSelector);
 
@@ -20,7 +21,7 @@ const Payment = () => {
 
   const paymentComplete = paymentSuccess || isAlreadyPurchase;
 
-  if (!isAuth) {
+  if (!getCookie('key')) {
     router.replace('/register');
   }
 

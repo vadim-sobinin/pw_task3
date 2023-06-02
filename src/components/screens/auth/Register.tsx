@@ -2,10 +2,10 @@ import Link from 'next/link';
 import Steps, { step } from './Steps';
 import { useForm } from 'react-hook-form';
 import { UserService } from '@/services/user.service';
-import { useAppDispatch, useAppSelector } from '@/redux/hook';
+import { useAppDispatch } from '@/redux/hook';
 import { setCurrentUser } from '@/redux/user/user.slice';
 import { useRouter } from 'next/router';
-import { selectUser } from '@/redux/user/user.selectors';
+import { getCookie } from '@/services/cookie';
 
 type FormValues = {
   username: string;
@@ -17,9 +17,7 @@ const Register = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
-  const { isAuth } = useAppSelector(selectUser);
-
-  if (isAuth) {
+  if (getCookie('key')) {
     router.replace('/payment');
   }
 
