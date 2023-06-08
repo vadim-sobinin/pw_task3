@@ -1,5 +1,5 @@
 import { useAppDispatch } from '@/redux/hook';
-import { selectProduct } from '@/redux/product/product.slice';
+import { selectProduct, setCurrentProduct } from '@/redux/product/product.slice';
 import { getCookie } from '@/services/cookie';
 import { productType } from '@/types';
 import Link from 'next/link';
@@ -26,9 +26,11 @@ const Card: FC<CardProps> = ({ card, activeProduct = 2 }) => {
           query: { subid: router.query.subid },
         });
       } else {
+        dispatch(setCurrentProduct(null));
         router.push('/payment');
       }
     } else {
+      dispatch(setCurrentProduct(null));
       router.push('/register');
     }
   };

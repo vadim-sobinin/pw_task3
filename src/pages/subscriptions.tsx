@@ -4,8 +4,8 @@ import { SubscribeType, codesType } from '@/types';
 import { SubscribeService } from '@/services/subscribe.service';
 
 type subPropsType = {
-  subList: SubscribeType[];
-  codeList: codesType[];
+  subListData: SubscribeType[];
+  codeListData: codesType[];
 };
 
 export async function getServerSideProps({ req }: any) {
@@ -23,12 +23,12 @@ export async function getServerSideProps({ req }: any) {
   const subscribe = await SubscribeService.getSubscribe(token);
 
   const codes = await SubscribeService.getCodes(token);
-  return { props: { codeList: codes.data, subList: subscribe.data } };
+  return { props: { codeListData: codes.data, subListData: subscribe.data } };
 }
 
-const subscriptions: NextPage<subPropsType> = ({ subList, codeList }) => {
+const subscriptions: NextPage<subPropsType> = ({ subListData, codeListData }) => {
   // console.log(subList, codeList);
-  return <Subscriptions subList={subList} codeList={codeList} />;
+  return <Subscriptions subListData={subListData} codeListData={codeListData} />;
 };
 
 export default subscriptions;

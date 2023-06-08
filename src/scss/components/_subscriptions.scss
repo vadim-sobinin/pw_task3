@@ -10,6 +10,10 @@
   }
 }
 
+.subscriptions {
+  margin-bottom: 120px;
+}
+
 .subscription {
   &__header {
     display: flex;
@@ -25,7 +29,54 @@
   }
 
   &__cards {
-    margin-bottom: 120px;
+  }
+
+  &__hold {
+    margin-top: 73px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &-text {
+      font-family: 'IBold';
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    &-btn {
+    }
+  }
+  &__no-card {
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .cross {
+      margin-bottom: 24px;
+    }
+  }
+}
+
+.no-card {
+  &__title {
+    font-family: 'IBold';
+    font-size: 28px;
+    line-height: 40px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    margin-bottom: 32px;
+    max-width: 260px;
+    font-family: 'IMed';
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 400;
+    text-align: center;
   }
 }
 

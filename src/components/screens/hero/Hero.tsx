@@ -5,6 +5,7 @@ import { productType } from '@/types';
 import { useRouter } from 'next/router';
 import { useAppDispatch } from '@/redux/hook';
 import { setCurrentProduct } from '@/redux/product/product.slice';
+import { getCookie } from '@/services/cookie';
 
 type Props = {
   cardList: productType[];
@@ -17,9 +18,13 @@ const Hero: FC<Props> = ({ cardList }) => {
   const dispatch = useAppDispatch();
 
   if (isUpgrade) {
-    dispatch(
-      setCurrentProduct(cardList.filter((card) => card.id === Number(router.query.prodid))[0]),
-    );
+    if (!getCookie('key')) {
+      router.push('/');
+    } else {
+      dispatch(
+        setCurrentProduct(cardList.filter((card) => card.id === Number(router.query.prodid))[0]),
+      );
+    }
   }
 
   return (

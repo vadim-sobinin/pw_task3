@@ -1,11 +1,11 @@
 import { SubscribeType } from '@/types';
 import Image from 'next/image';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 
 type SlidePropsType = {
   isActive: boolean;
   sub: SubscribeType;
-  setSelectedSubId: (id: number) => void;
+  setSelectedSub: (id: number) => void;
 };
 
 const formatDate = (date: Date) => {
@@ -21,11 +21,13 @@ const formatDate = (date: Date) => {
   return dd + '.' + mm + '.' + yy;
 };
 
-const Slide: FC<SlidePropsType> = ({ isActive, sub, setSelectedSubId }) => {
+const Slide: FC<SlidePropsType> = ({ isActive, sub, setSelectedSub }) => {
   const date = new Date(Number(sub.currentPeriodEnd));
   const validUntil = formatDate(date);
 
-  isActive && setSelectedSubId(sub.id);
+  useEffect(() => {
+    isActive && setSelectedSub(sub.id);
+  }, [isActive]);
 
   return (
     <div className={`subscription__slide ${isActive ? 'active' : ''}`}>

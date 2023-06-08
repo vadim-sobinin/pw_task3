@@ -1,4 +1,6 @@
+import { codesType } from '@/types';
 import axios, { AxiosError } from 'axios';
+import ky from 'ky';
 
 const API_URL = 'https://internship.purrweb.site/api';
 
@@ -75,6 +77,32 @@ export const SubscribeService = {
       return response;
     } catch (err) {
       console.log(err);
+    }
+  },
+
+  async changeHoldCodes(token: string, selectedCodes: codesType[], subId: number) {
+    try {
+      const config = {
+        headers: { Authorization: `Bearer ${token}` },
+      };
+      const codesIds = selectedCodes.map((code) => Number(code.id));
+      const bodyParameters = { codesIds, subscribeId: subId };
+
+      const { data } = await axios.put<{ id: number; username: string; email: string }>(
+        `${API_URL}/code/manage`,
+        bodyParameters,
+        config,
+      );
+      return data;
+    } catch (err) {
+      const error = err as AxiosError;
+      if (error.response) {
+        return error.response.data;
+      } else if (error.request) {
+        return error.request.data;
+      } else {
+        alert(`Error ${error.message}`);
+      }
     }
   },
 };
