@@ -6,12 +6,13 @@ import { useRouter } from 'next/router';
 import { useAppDispatch } from '@/redux/hook';
 import { setCurrentProduct } from '@/redux/product/product.slice';
 import { getCookie } from '@/services/cookie';
+import cardList from '../../../../public/products.json';
 
 type Props = {
   cardList: productType[];
 };
 
-const Hero: FC<Props> = ({ cardList }) => {
+const Hero: FC = () => {
   const router = useRouter();
   const isUpgrade = Boolean(router.query.subid);
 
